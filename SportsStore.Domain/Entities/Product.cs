@@ -15,7 +15,7 @@ namespace SportsStore.Domain.Entities
         public string Category { get; set; }
         public override String ToString()
         {
-            return String.Format("Id - {0} ; Name {1} ; Description {2} ; Price {3} ; Category {4}", ProductID,Name,Description,Price,Category);
+            return String.Format("Id - {0} ; Name - {1} ; Description - {2} ; Price - {3} ; Category - {4}", ProductID,Name,Description,Price,Category);
         }
     }
 

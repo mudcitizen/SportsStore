@@ -18,6 +18,8 @@ namespace SportsStore.WebUI.Controllers
         }
 
         public ViewResult List() {
+
+            String s = repository.ToString();
             return View(repository.Products);
         }
     }

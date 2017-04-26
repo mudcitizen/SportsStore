@@ -23,7 +23,8 @@ namespace SportsStore.Domain.Concrete
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine(String.Format("Count - {0}", Products.Count()));
+            int count = Products.Count();
+            sb.AppendLine(String.Format("Count - {0}", count));
             foreach (Product p in Products) {
                 sb.AppendLine(p.ToString());
             }
