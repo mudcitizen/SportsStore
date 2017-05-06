@@ -33,7 +33,7 @@ namespace SportsStore.UnitTests
 
             // Act
 
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(null,2).Model;
 
             // Assert
             Product[] prodArray = result.Products.ToArray();
@@ -91,7 +91,7 @@ htmlString);
             controller.PageSize = 3;
 
             // Act
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(null,2).Model;
 
             // Assert
             PagingInfo pageInfo = result.PagingInfo;
@@ -100,7 +100,37 @@ htmlString);
             Assert.AreEqual(pageInfo.TotalItems, 5);
             Assert.AreEqual(pageInfo.TotalPages, 2);
         }
+        [TestMethod]
+        public void Can_Filter_Products()
+        {
 
+            const String cat1 = "Cat1";
+            const String cat2 = "Cat2";
+
+            // Arrange
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[] {
+                new Product {ProductID = 1, Name = "P1", Category = cat1},
+                new Product {ProductID = 2, Name = "P2", Category = cat2},
+                new Product {ProductID = 3, Name = "P3", Category = cat1},
+                new Product {ProductID = 4, Name = "P4", Category = cat2},
+                new Product {ProductID = 5, Name = "P5", Category = "Cat3"}
+            });
+
+            // Arrange
+            ProductController controller = new ProductController(mock.Object);
+            controller.PageSize = 3;
+
+            // Act
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(cat2, 1).Model;
+            IEnumerable<Product> products = result.Products;
+
+            // Assert
+            Assert.IsTrue(products.Count() == 2);
+            Assert.IsTrue(products.Where(p => p.Name == "P2").Count() == 1);
+            Assert.IsTrue(products.Where(p => p.Name == "P4").Count() == 1);
+
+            }
 
     }
 

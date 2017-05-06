@@ -20,7 +20,7 @@ namespace SportsStore.WebUI.Controllers
             repository = productRepository;
         }
 
-        public ViewResult List(int page = 1) {
+        public ViewResult List(String category, int page = 1) {
 
             PagingInfo pi = new PagingInfo();
             pi.ItemsPerPage = PageSize;
@@ -30,6 +30,7 @@ namespace SportsStore.WebUI.Controllers
             ProductsListViewModel vm = new ProductsListViewModel();
             vm.PagingInfo = pi;
             vm.Products = repository.Products
+                .Where(p => p.Category == category || category == null)
                 .OrderBy(p => p.ProductID)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize);
