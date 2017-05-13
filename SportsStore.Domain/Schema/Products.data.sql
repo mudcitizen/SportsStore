@@ -1,6 +1,6 @@
 ﻿SET IDENTITY_INSERT [dbo].[Products] ON
 INSERT INTO [dbo].[Products] ([ProductID], [Name], [Description], [Category], [Price]) VALUES (1, N'Kayak', N'A boat for 1 person', N'Watersports', CAST(275.00 AS Decimal(16, 2)))
-INSERT INTO [dbo].[Products] ([ProductID], [Name], [Description], [Category], [Price]) VALUES (3, N'Lifejackat', N'Protective and fashionable', N'Watersports', CAST(48.95 AS Decimal(16, 2)))
+INSERT INTO [dbo].[Products] ([ProductID], [Name], [Description], [Category], [Price]) VALUES (3, N'Lifejacket', N'Protective and fashionable', N'Watersports', CAST(48.95 AS Decimal(16, 2)))
 INSERT INTO [dbo].[Products] ([ProductID], [Name], [Description], [Category], [Price]) VALUES (4, N'Soccer Ball', N'FIFA-Approved size and weight', N'Soccer', CAST(19.50 AS Decimal(16, 2)))
 INSERT INTO [dbo].[Products] ([ProductID], [Name], [Description], [Category], [Price]) VALUES (5, N'Corner Flags', N'Give your playing field a professional touch', N'Soccer', CAST(34.95 AS Decimal(16, 2)))
 INSERT INTO [dbo].[Products] ([ProductID], [Name], [Description], [Category], [Price]) VALUES (6, N'Stadium', N'Flat-pack 35,000 seat stadium', N'Soccer', CAST(79500.00 AS Decimal(16, 2)))

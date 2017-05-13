@@ -12,7 +12,7 @@ namespace SportsStore.WebUI.Controllers
     public class ProductController : Controller
     {
 
-        public int PageSize = 4;
+        public int PageSize = 3;
         private IProductRepository repository;
 
         public ProductController(IProductRepository productRepository)
@@ -22,7 +22,9 @@ namespace SportsStore.WebUI.Controllers
 
         public ViewResult List(String category, int page = 1)
         {
-
+            System.Diagnostics.Debug.WriteLine(
+                String.Format("Product.List({0},{1})"
+                , category == null ? "null" : category, page.ToString()));
             PagingInfo pi = new PagingInfo();
             pi.ItemsPerPage = PageSize;
             pi.CurrentPage = page;
