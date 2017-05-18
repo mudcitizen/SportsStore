@@ -9,7 +9,6 @@
     
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
-        System.Diagnostics.Debug.WriteLine(String.Format("ProductSummary - ReturnUrl {0}", Request.Url.PathAndQuery));
         <div class="pull-right">
             @Html.HiddenFor(x => x.ProductID)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
