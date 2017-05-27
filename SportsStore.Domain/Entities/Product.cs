@@ -25,9 +25,14 @@ namespace SportsStore.Domain.Entities
 
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; }
+
+
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
+
         public override String ToString()
         {
-            return String.Format("Id - {0} ; Name - {1} ; Description - {2} ; Price - {3} ; Category - {4}", ProductID,Name,Description,Price,Category);
+            return String.Format("Id - {0} ; Name - {1} ; Description - {2} ; Price - {3} ; Category - {4} ; ImageMimeType - {5}", ProductID,Name,Description,Price,Category,ImageMimeType);
         }
     }
 
